@@ -1,6 +1,6 @@
 <?php
 
-$conexao = mysqli_connect('localhost', 'root', 'blink182', 'viva_noite_2023', '3310');
+$conexao = mysqli_connect('localhost', 'root', '', 'viva_noite_2023', '3306');
 if (!$conexao) {
     die('Não foi possível conectar');
 }
