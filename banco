@@ -1,0 +1,43 @@
+CREATE DATABASE viva_noite_2023;
+
+USE viva_noite_2023;
+
+CREATE TABLE usuario (
+cpf VARCHAR(12) PRIMARY KEY,
+nome VARCHAR(200),
+telefone VARCHAR(20)
+);
+
+CREATE TABLE tipo (
+cod_tipo INT AUTO_INCREMENT PRIMARY KEY,
+descricao VARCHAR(20)
+);
+
+CREATE TABLE login (
+cpf VARCHAR(12) PRIMARY KEY,
+login VARCHAR(50),
+senha VARCHAR(100),
+tipo INT,
+CONSTRAINT fk_usuario FOREIGN KEY (cpf) REFERENCES usuario (cpf),
+CONSTRAINT fk_tipo FOREIGN KEY (tipo) REFERENCES tipo (cod_tipo)
+);
+
+INSERT INTO tipo (descricao)
+VALUES
+('Gerente'),
+('Vendedor'),
+('usuario');
+
+INSERT INTO usuario (cpf, nome, telefone)
+VALUES
+('12345678900', 'Chuck Noris', '83988887777'),
+('32165498700', 'Silvester Stalone', '83987875544'),
+('12345698700', 'Arnold Schwazeneger', '83985874563'),
+('98765432100', 'Terry Crew', '83986547854');
+
+INSERT INTO login (cpf, login, senha, tipo)
+VALUES
+('12345678900', 'chuck', 'noris', 1),
+('32165498700', 'stalone', 'cobra', 2),
+('12345698700', 'arnold', 'illbeback', 2),
+('98765432100', 'terry', 'latrel', 3);
